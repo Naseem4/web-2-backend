@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+
 import { ApiError } from "../middleware/errorHandler.js";
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -50,6 +51,7 @@ export const register = async (req, res, next) => {
       name,
       email,
       password: hashedPassword,
+      role: "user",
     });
 
     return res.status(201).json({
@@ -66,6 +68,7 @@ export const register = async (req, res, next) => {
     next(error);
   }
 };
+
 
 /**
  * @route   POST /api/auth/login

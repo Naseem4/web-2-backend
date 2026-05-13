@@ -9,6 +9,9 @@ import offerRoutes from "./routes/offer.js";
 import { swaggerSpec } from "./swagger.js";
 import { errorHandler, notFound } from "./middleware/errorHandler.js";
 import { checkExpiredSubscriptions } from "./jobs/checkExpiredSubscriptions.js";
+import aiRoutes from "./routes/aiRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 /**
  * @entry index.js
@@ -85,6 +88,10 @@ app.use(express.json());
 app.use("/api/offers", offerRoutes);
 app.use("/api/submissions", submissionRoutes);
 app.use("/api/auth", authRoutes);
+
+app.use("/api/ai", aiRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/admin", adminRoutes);
 
 /**
  * @docs Swagger UI
