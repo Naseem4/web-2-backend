@@ -19,8 +19,21 @@ const userSchema = new Schema(
 
     password: {
       type: String,
-      required: true,
+      required: function () {
+        return !this.firebaseUID;
+      },
       minlength: 6,
+    },
+
+    photoURL: {
+      type: String,
+      default: "",
+    },
+
+    firebaseUID: {
+      type: String,
+      unique: true,
+      sparse: true,
     },
 
     role: {
@@ -29,23 +42,11 @@ const userSchema = new Schema(
       default: "user",
     },
 
-    /**
-     * @field isActive
-     * Controls whether the account can log in.
-     * Admin can set this to false to suspend a user without deleting them.
-     * Checked in the login controller before issuing a JWT.
-     */
     isActive: {
       type: Boolean,
       default: true,
     },
 
-    /**
-     * @field lastLoginAt
-     * Updated every time the user logs in successfully.
-     * Used by the admin dashboard to show last activity.
-     * Helps detect stale or abandoned accounts.
-     */
     lastLoginAt: {
       type: Date,
     },
@@ -55,4 +56,4 @@ const userSchema = new Schema(
   }
 );
 
-export default mongoose.model("User", userSchema);
+export default mongoose.models.User || mongoose.model("User", userSchema);

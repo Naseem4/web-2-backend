@@ -14,6 +14,8 @@ import dashboardRoutes from "./routes/dashboardRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import planRoutes from "./routes/planRoutes.js";
 import userInformationRoutes from "./routes/UserInformationRoutes.js";
+import firebaseAuthRoutes from "./routes/authRoutes.js";
+
 
 
 
@@ -92,6 +94,7 @@ app.use(express.json());
 app.use("/api/offers", offerRoutes);
 app.use("/api/submissions", submissionRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/firebase-auth", firebaseAuthRoutes);
 app.use("/api/plans", planRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/dashboard", dashboardRoutes);
