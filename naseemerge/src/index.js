@@ -13,6 +13,9 @@ import aiRoutes from "./routes/aiRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import planRoutes from "./routes/planRoutes.js";
+import userInformationRoutes from "./routes/UserInformationRoutes.js";
+
+
 
 /**
  * @entry index.js
@@ -93,7 +96,7 @@ app.use("/api/plans", planRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/admin", adminRoutes);
-
+app.use("/api/user-information", userInformationRoutes);
 
 
 
