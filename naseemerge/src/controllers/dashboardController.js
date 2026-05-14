@@ -1,5 +1,7 @@
-import dashboardData from "../data/dashboardData.js";
+import Dashboard from "../models/Dashboard.js";
 
-export const getDashboard = (req, res) => {
-    res.status(200).json(dashboardData);
+export const getDashboard = async (req, res) => {
+    const data = await Dashboard.findOne();
+
+    res.json(data);
 };
